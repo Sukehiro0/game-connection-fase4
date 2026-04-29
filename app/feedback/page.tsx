@@ -96,7 +96,7 @@ export default function FeedbackPage() {
           </h1>
 
           {/* DESCRIÇÃO */}
-          <p className="text-gray-400 mt-4 text-lg">
+          <p className="text-gray-300 mt-4 text-lg">
             Sua conta foi criada com sucesso. Agora é só encontrar seu duo e partir para o rankup.
           </p>
 
@@ -104,21 +104,22 @@ export default function FeedbackPage() {
           <Link 
             href="/"
             className="group w-full bg-brand-green text-brand-dark font-extrabold text-lg py-4 rounded-xl shadow-[0_4px_0_0_#0ea149] transition-all hover:bg-brand-hover hover:-translate-y-1 hover:shadow-[0_6px_0_0_#10a14a] active:translate-y-0.5 active:shadow-none flex items-center justify-center gap-2 mt-10"
+            aria-label="Voltar para a página inicial"
           >
-            <Home size={20} />
+            <Home size={20} aria-hidden="true" />
             Ir para Home
           </Link>
 
           {/* CONTADOR */}
-          <p className="text-sm text-gray-500 mt-6 font-medium">
+          <p className="text-sm text-gray-300 mt-6 font-medium">
             Redirecionando automaticamente em <span className="text-brand-green font-bold text-base">{countdown}</span> segundos...
           </p>
 
           {/* LINK DADOS */}
           <div className="mt-4">
-              <Link href="/dados" className="text-sm text-gray-400 hover:text-white flex items-center justify-center gap-1 transition-colors">
-                  Ou veja os dados do mercado <ArrowRight size={14} />
-              </Link>
+            <Link href="/dados" className="text-sm text-gray-300 hover:text-white flex items-center justify-center gap-1 transition-colors">
+              Ou veja os dados do mercado <ArrowRight size={14} aria-hidden="true" />
+            </Link>
           </div>
 
         </div>

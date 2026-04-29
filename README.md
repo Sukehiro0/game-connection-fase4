@@ -46,12 +46,7 @@ Siga estes passos para executar a aplicação localmente:
 
 ## 👥 Integrantes do Grupo
 
-* **Vitor Ribeiro** - RM 566950
 * **Lucas Guedes** - RM 567004
-* **Pedro Luiz** - RM 568368
-* **Bruna Rodrigues** - RM 566965
-* **Washington** - RM 564980
-
 ---
 
-© 2025 Game Connection
+© 2026 Game Connection
