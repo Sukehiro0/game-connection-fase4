@@ -9,15 +9,18 @@ import { Gamepad2, BarChart3, Info, LogIn, Menu, X } from 'lucide-react';
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
-
   const toggleMenu = () => setIsOpen(!isOpen);
   const closeMenu = () => setIsOpen(false);
-
   const navItems = [
     { label: 'Início', href: '/', icon: <Gamepad2 size={18} /> },
     { label: 'Pesquisa & Dados', href: '/dados', icon: <BarChart3 size={18} /> },
     { label: 'Sobre', href: '/sobre', icon: <Info size={18} /> },
   ];
+
+  // Caso a URL comece com "/admin" a Navbar normal do user desaparece
+  if (pathname?.startsWith('/admin')) {
+    return null;
+  }
 
   return (
     <nav className="w-full bg-brand-dark/95 backdrop-blur-md border-b border-white/5 fixed top-0 z-50 h-[72px]">
