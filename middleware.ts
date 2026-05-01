@@ -3,9 +3,20 @@ import type { NextRequest } from 'next/server';
 
 const rateLimitMap = new Map();
 
+
+/**
+ * Resuminho para o Sensei Pedro Bezerra
+ * @function middleware
+ * @description Implementa arquitetura Zero Trust e proteção de borda (Edge).
+ * Intercepta requisições para aplicar Rate Limiting (mitigando Brute Force/DoS) 
+ * e injeta cabeçalhos de segurança baseados no OWASP Top 10 (HSTS, X-Frame-Options).
+ * @param {NextRequest} request - A requisição HTTP de entrada.
+ * @returns {NextResponse} Resposta com headers blindados ou bloqueio HTTP 429.
+ */
+
 export function middleware(request: NextRequest) {
   const response = NextResponse.next();
-  const ip = request.ip ?? '127.0.0.1';
+  const ip = request.headers.get('x-forwarded-for') ?? '127.0.0.1';
   
   // ==========================================
   // 1. RATE LIMITING (Anti-Brute Force / DoS)

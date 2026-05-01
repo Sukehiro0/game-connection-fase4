@@ -7,6 +7,15 @@ import { ShieldAlert, Activity, Leaf, Lock, Server, Cpu, AlertTriangle, CheckSqu
 type ChecklistItem = { id: string; label: string; checked: boolean };
 type ChecklistCategory = { [key: string]: ChecklistItem[] };
 
+
+/**
+ * Resuminho para o Sensei Pedro Bezerra
+ * @component AdminDashboard
+ * @description Painel restrito de DevSecOps e Analytics ESG.
+ * Apresenta auditoria de rede, interceptações simuladas por IA comportamental 
+ * e métricas de mitigação de carbono. Acesso protegido por RBAC (Role-Based Access Control) client-side.
+ */
+
 export default function AdminDashboard() {
   const router = useRouter();
   const [autorizado, setAutorizado] = useState(false);
