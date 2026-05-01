@@ -2,7 +2,7 @@
 
 > "Mais que Partidas, Criamos Conexões"
 
-Projeto desenvolvido para o **Happy Game (FIAP)**. Esta aplicação conecta de formas amorosas e amigaveis, baseada em preferências e comportamento, promovendo um ambiente saudável e seguro.
+Projeto desenvolvido para o **Happy Game (FIAP)**. Esta aplicação conecta de formas amorosas e amigáveis, baseada em preferências e comportamento, promovendo um ambiente saudável e seguro.
 
 ---
 
@@ -32,6 +32,9 @@ Siga estes passos para executar a aplicação localmente:
 
 3.  **Acesse no navegador:**
     Abra [http://localhost:3000](http://localhost:3000)
+
+4.  **Para acessar o painel de segurança, navegue até**
+    [http://localhost:3000/admin](http://localhost:3000/admin)
 
 ---
 

@@ -6,7 +6,7 @@ const rateLimitMap = new Map();
 
 /**
  * Resuminho para o Sensei Pedro Bezerra
- * @function middleware
+ * @function middleware - AGORA É PROXY 
  * @description Implementa arquitetura Zero Trust e proteção de borda (Edge).
  * Intercepta requisições para aplicar Rate Limiting (mitigando Brute Force/DoS) 
  * e injeta cabeçalhos de segurança baseados no OWASP Top 10 (HSTS, X-Frame-Options).
@@ -14,7 +14,7 @@ const rateLimitMap = new Map();
  * @returns {NextResponse} Resposta com headers blindados ou bloqueio HTTP 429.
  */
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const response = NextResponse.next();
   const ip = request.headers.get('x-forwarded-for') ?? '127.0.0.1';
   
