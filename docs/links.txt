@@ -1,1 +1,15 @@
-https://www.youtube.com/watch?v=sEc7CzZYzkA
+https://game-connection-fase4-cgth.vercel.app/
+https://github.com/Sukehiro0/game-connection-next
+---------------------------------------------------
+Instrução de Acesso Restrito: Painel Admin (Zero Trust)
+Para fins de **avaliação** do MVP, o painel de métricas DevSecOps (/admin) possui bloqueio de rota ativo. Então vou vazar a chave de acesso aqui.
+
+Acesse a URL do projeto na Vercel. (Bem ali encima)
+
+Abra o painel de ferramentas do desenvolvedor (F12) e vá na aba Console
+
+Cole o comando abaixo e aperte Enter para gerar o token de sessão
+
+------  localStorage.setItem("admin_security_token", "pedro-bezerra-auth-v1") -------
+
+Em seguida, acesse a rota /admin ou clique no botão de atualizar a página (F5) caso já esteja nela. O acesso será concedido.

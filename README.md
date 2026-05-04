@@ -8,7 +8,7 @@ Projeto desenvolvido para o **Happy Game (FIAP)**. Esta aplicação conecta de f
 
 ## Tecnologias Utilizadas
 
-* **Framework:** Next.js 15 (App Router)
+* **Framework:** Next.js 16.2.4 (App Router) [npx next -v]
 * **Linguagem:** TypeScript
 * **Estilização:** Tailwind CSS
 * **Ícones:** Lucide React

@@ -46,7 +46,7 @@ export default function SobrePage() {
           </div>
         </div>
 
-        {/* === SEÇÃO 2: CONECTAR (Invertida) === */}
+        {/* === SEÇÃO 2: CONECTAR === */}
         <div className="flex flex-col md:flex-row items-center gap-12 mb-24">
           <div className="flex-1 flex justify-center">
             <div 
@@ -88,7 +88,7 @@ export default function SobrePage() {
           </div>
         </div>
 
-        {/* CTA (Chamada para Ação) */}
+        {/* CTA */}
         <div className="text-center mb-24">
           <Link 
             href="/cadastro" 

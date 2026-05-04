@@ -18,7 +18,7 @@ import { Eye, EyeOff, Check, Loader2, ArrowLeft } from "lucide-react";
 export default function CadastroPage() {
   const router = useRouter();
   
-  // ============================================================================
+  // ===========================================================================
   // ESTADOS GLOBAIS DO FORMULÁRIO
   // ============================================================================
   const [email, setEmail] = useState("");
@@ -27,7 +27,7 @@ export default function CadastroPage() {
   const [loading, setLoading] = useState(false);
   const [mostrarSenha, setMostrarSenha] = useState(false);
   
-  // ============================================================================
+  // ===========================================================================
   // ESTADOS DE VALIDAÇÃO E FEEDBACK
   // ============================================================================
   const [emailErro, setEmailErro] = useState("");
@@ -40,7 +40,7 @@ export default function CadastroPage() {
   });
   const [forcaSenha, setForcaSenha] = useState({ porcentagem: 0, texto: "", cor: "bg-red-500" });
 
-  // ============================================================================
+  // ===========================================================================
   // EFEITOS DE CICLO DE VIDA (HOOKS)
   // ============================================================================
 
@@ -49,7 +49,7 @@ export default function CadastroPage() {
    * e validar as regras de segurança (Regex) em tempo real.
    */
   useEffect(() => {
-    // 1. Mapeia os requisitos usando Expressões Regulares (Regex)
+    // 1. Regex
     const reqs = {
       tamanho: senha.length >= 8,
       maiuscula: /[A-Z]/.test(senha),
@@ -65,7 +65,7 @@ export default function CadastroPage() {
     if (reqs.minuscula) forca += 25;
     if (reqs.numero) forca += 25;
 
-    // 3. Define a identidade visual (cor e texto) baseada na entropia
+    // 3. Váriação na identidade visual baseada nos requisitos atingidos
     let cor = "bg-red-500";
     let texto = "";
 
@@ -77,11 +77,8 @@ export default function CadastroPage() {
     }
 
     setForcaSenha({ porcentagem: forca, texto, cor });
-    
-    // Limpa a mensagem de erro impeditiva assim que o usuário volta a digitar
     if (senhaErro) setSenhaErro("");
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [senha]); // Dependência isolada: re-renderiza APENAS quando a senha muda
+  }, [senha]); 
 
   /**
    * @description Remove o alerta de erro do email quando o usuário inicia a correção.
@@ -100,7 +97,7 @@ export default function CadastroPage() {
    * padrão do navegador (preventDefault) e aplica validação final estrita antes da rota.
    */
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault(); // Impede o comportamento nativo (refresh) do HTML5
+    e.preventDefault(); 
     let valido = true;
 
     // Regex oficial para formato de e-mail (RFC 5322 simplificada)
@@ -110,7 +107,7 @@ export default function CadastroPage() {
       valido = false;
     }
 
-    // Impede o avanço se a senha não estiver 100% forte
+    // Impede o avanço se a senha não cumprir todos os requisitos 
     if (forcaSenha.porcentagem < 100) {
       setSenhaErro("A senha não atende a todos os requisitos de segurança.");
       valido = false;
@@ -129,13 +126,13 @@ export default function CadastroPage() {
     }
   };
 
-  // ============================================================================
+  // ===========================================================================
   // RENDERIZAÇÃO DO COMPONENTE
   // ============================================================================
   return (
     <div className="min-h-screen bg-brand-dark pt-28 pb-10 px-4 flex items-center justify-center relative overflow-hidden">
       
-      {/* BACKGROUND EFFECTS: Glow radial decorativo (ignorado por leitores de tela) */}
+      {/* BACKGROUND: Glow radial no fundo */}
       <div 
         className="absolute top-[-20%] left-1/2 -translate-x-1/2 w-[100vw] h-[600px] rounded-full blur-[120px] pointer-events-none opacity-30"
         style={{ background: 'radial-gradient(circle, rgba(29,229,109,0.3) 0%, rgba(2,1,30,0) 70%)' }}
@@ -144,8 +141,7 @@ export default function CadastroPage() {
 
       {/* CONTAINER PRINCIPAL DO FORMULÁRIO */}
       <div className="w-full max-w-lg bg-brand-dark/90 backdrop-blur-md p-10 rounded-3xl border border-white/10 shadow-[0_0_50px_rgba(29,229,109,0.1)] relative z-10">
-        
-        {/* NAVEGAÇÃO: Botão de retorno com label ARIA para acessibilidade */}
+
         <Link
           href="/"
           aria-label="Voltar para a página inicial"
@@ -163,7 +159,7 @@ export default function CadastroPage() {
         {/* FORMULÁRIO */}
         <form onSubmit={handleSubmit} noValidate aria-label="Formulário de cadastro" className="space-y-6">
           
-          {/* ================= CAMPO: E-MAIL ================= */}
+          {/* ================= E-MAIL ================= */}
           <div>
             <label htmlFor="email" className="block text-sm font-bold text-gray-300 mb-2 ml-1">
               E-mail
@@ -173,7 +169,7 @@ export default function CadastroPage() {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              // HACK CSS: shadow-inset usado para sobrepor a cor branca forçada pelo Autofill do Google Chrome
+              // shadow-inset usado para sobrepor a cor branca forçada pelo Autofill do Navegador
               className={`w-full bg-brand-green/5 border ${emailErro ? 'border-red-500' : 'border-brand-green/20'} text-white px-4 py-3.5 rounded-xl focus:outline-none focus:border-brand-green focus:ring-1 focus:ring-brand-green transition-all placeholder:text-gray-400 shadow-[0_0_0_30px_rgb(2,1,17)_inset] [-webkit-text-fill-color:white]`}
               placeholder="pedrobezerra@email.com"
               aria-required="true"
@@ -181,7 +177,7 @@ export default function CadastroPage() {
               aria-describedby={emailErro ? "email-erro" : undefined}
               autoComplete="email"
             />
-            {/* FEEDBACK DE ERRO (Acessível via role="alert") */}
+            {/* FEEDBACK DE ERRO */}
             {emailErro && (
               <p id="email-erro" role="alert" className="text-red-500 text-xs mt-2 ml-1 font-medium animate-fade-in-up">
                 {emailErro}
@@ -189,7 +185,7 @@ export default function CadastroPage() {
             )}
           </div>
 
-          {/* ================= CAMPO: SENHA ================= */}
+          {/* ================= SENHA ================= */}
           <div>
             <label htmlFor="senha" className="block text-sm font-bold text-gray-300 mb-2 ml-1">
               Senha
@@ -200,15 +196,14 @@ export default function CadastroPage() {
                 type={mostrarSenha ? "text" : "password"}
                 value={senha}
                 onChange={(e) => setSenha(e.target.value)}
-                // HACK CSS: Identico ao e-mail, previne quebra de design no Autofill
+                // shadow-inset usado para sobrepor a cor branca forçada pelo Autofill do Navegador
                 className={`w-full bg-brand-green/5 border ${senhaErro ? 'border-red-500' : 'border-brand-green/20'} text-white px-4 py-3.5 rounded-xl focus:outline-none focus:border-brand-green focus:ring-1 focus:ring-brand-green transition-all placeholder:text-gray-400 pr-12 shadow-[0_0_0_30px_rgb(2,1,17)_inset] [-webkit-text-fill-color:white]`}
-                // placeholder="••••••••"
                 aria-required="true"
                 aria-invalid={senhaErro ? "true" : "false"}
                 aria-describedby={`requisitos-senha${senhaErro ? " senha-erro" : ""}`}
                 autoComplete="new-password"
               />
-              {/* TOGGLE: Ocultar/Mostrar senha */}
+              {/* TOGGLE */}
               <button
                 type="button"
                 onClick={() => setMostrarSenha(!mostrarSenha)}
@@ -225,7 +220,7 @@ export default function CadastroPage() {
               </p>
             )}
 
-            {/* PROGRESS BAR: Indicador visual de força da senha */}
+            {/* PROGRESS BAR */}
             <div
               role="progressbar"
               aria-label={`Força da senha: ${forcaSenha.texto || "não definida"}`}
@@ -315,7 +310,7 @@ export default function CadastroPage() {
   );
 }
 
-// ============================================================================
+// ===========================================================================
 // SUBCOMPONENTES
 // ============================================================================
 

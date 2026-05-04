@@ -20,10 +20,7 @@ export default function Home() {
   // ESTADOS GLOBAIS DE UI
   // ============================================================================
   
-  /** @state {string} subtitle - Controla o texto exibido progressivamente no efeito de máquina de escrever. */
   const [subtitle, setSubtitle] = useState("");
-  
-  /** @state {number} userCount - Controla o valor numérico do contador animado de usuários ativos. */
   const [userCount, setUserCount] = useState(0);
   
   // ============================================================================

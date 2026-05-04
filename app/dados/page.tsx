@@ -129,7 +129,7 @@ export default function DadosPage() {
   return (
     <div className="min-h-screen bg-brand-dark pt-40 pb-20 px-4 relative overflow-hidden">
       
-      {/* BACKGROUND EFFECTS */}
+      {/* BACKGROUND */}
       <div 
         className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[80vw] h-[600px] rounded-full blur-[120px] pointer-events-none opacity-40"
         style={{ background: 'radial-gradient(circle, rgba(29,229,109,0.3) 0%, rgba(2,1,30,0) 70%)' }}
@@ -297,7 +297,7 @@ export default function DadosPage() {
           </div>
         </section>
 
-        {/* GALERIA DE JOGOS (Com Fallback de Imagem Seguro) */}
+        {/* GALERIA DE JOGOS (Com Fallback de Imagem Seguro, motivos na Doc) */}
         <section>
           <h2 className="text-2xl font-bold text-white flex items-center gap-2 mb-8">
             <span className="w-2 h-8 bg-brand-green rounded-full"></span>
@@ -318,7 +318,7 @@ export default function DadosPage() {
                       src={game.background_image || 'https://images.unsplash.com/photo-1552820728-8b83bb6b773f?q=80&w=800&auto=format&fit=crop'} 
                       alt={game.name}
                       onError={(e) => { 
-                        // FALLBACK DE SEGURANÇA: Se a imagem quebrar, ele carrega essa imagem gamer genérica
+                        // FALLBACK DE SEGURANÇA: Se der ruim na imagem, ele carrega essa imagem 
                         e.currentTarget.src = 'https://images.unsplash.com/photo-1552820728-8b83bb6b773f?q=80&w=800&auto=format&fit=crop'; 
                       }}
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
@@ -349,9 +349,9 @@ export default function DadosPage() {
   );
 }
 
-// ============================================================================
-// SUBCOMPONENTE: Input Numérico Estilizado (Sem as setas feias do navegador)
-// ============================================================================
+// =========================================
+// SUBCOMPONENTE: Input Numérico Estilizado 
+// ========================================
 function InputNumericoCustomizado({ id, label, value, setValue, step, min, max, desc }: any) {
   
   // Funções controladas para os novos botões customizados
@@ -365,7 +365,6 @@ function InputNumericoCustomizado({ id, label, value, setValue, step, min, max, 
       </label>
       
       <div className="relative">
-        {/* Input com appearance-none escondendo o controle padrão */}
         <input
           id={id}
           type="number"
@@ -374,7 +373,6 @@ function InputNumericoCustomizado({ id, label, value, setValue, step, min, max, 
           className="w-full bg-brand-green text-[#020111] font-bold px-4 py-3 rounded-lg text-lg [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [-moz-appearance:textfield] focus:outline-none focus:ring-2 focus:ring-white pr-12"
         />
         
-        {/* Nossos Botões Customizados de UI Premium */}
         <div className="absolute right-1 top-1 bottom-1 flex flex-col justify-center gap-0.5 pr-1">
           <button 
             type="button" 
