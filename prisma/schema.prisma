@@ -1,0 +1,23 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+// Tabela de Usuários focada no ecossistema Gamer
+model User {
+  id             String   @id @default(uuid())
+  email          String   @unique
+  username       String   @unique
+  password       String   
+  bio            String?  @db.Text
+  discordTag     String?  
+  isToxic        Boolean  @default(false) 
+  favoriteGame   String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
